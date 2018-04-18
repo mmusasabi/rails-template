@@ -1,0 +1,29 @@
+version: '3'
+
+services:
+  rails:
+    build: ./.docker/rails
+    volumes:
+      - rails_bundle:/usr/local/bundle
+    ports:
+      - "${EXTERNAL_RAILS_PORT:-9292}:9292"
+    environment:
+      - DB_HOST=mysql
+    depends_on:
+      - mysql
+    tty: true
+
+  mysql:
+    build: ./.docker/mysql
+    volumes:
+      - ./.docker/mysql/init:/docker-entrypoint-initdb.d
+      - mysql_data:/var/lib/mysql
+    environment:
+      - MYSQL_ALLOW_EMPTY_PASSWORD=yes
+      - MYSQL_DATABASE=rails
+    ports:
+      - "${EXTERNAL_MYSQL_PORT:-3306}:3306"
+
+volumes:
+  rails_bundle:
+  mysql_data:
