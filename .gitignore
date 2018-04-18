@@ -29,5 +29,9 @@
 # Ignore master key for decrypting credentials and more.
 /config/master.key
 
+# this is sample!!
+/Gemfile.lock
+/db/schema.rb
+
 # other
-.env
+/.env

@@ -4,6 +4,7 @@ services:
   rails:
     build: ./.docker/rails
     volumes:
+      - .:/rails-template:cached
       - rails_bundle:/usr/local/bundle
     ports:
       - "${EXTERNAL_RAILS_PORT:-9292}:9292"
@@ -16,7 +17,6 @@ services:
   mysql:
     build: ./.docker/mysql
     volumes:
-      - ./.docker/mysql/init:/docker-entrypoint-initdb.d
       - mysql_data:/var/lib/mysql
     environment:
       - MYSQL_ALLOW_EMPTY_PASSWORD=yes

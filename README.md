@@ -1,24 +1,14 @@
-# README
+# 私を読んで
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+## 前提
 
-Things you may want to cover:
+- docker-compose
 
-* Ruby version
+## How to use
 
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+```
+docker-compose up
+docker-compose exec rails bundle install
+docker-compose exec rails rails db:migrate
+docker-compose exec rails rails db:seed
+```
