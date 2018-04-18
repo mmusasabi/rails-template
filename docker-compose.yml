@@ -7,7 +7,7 @@ services:
       - .:/rails-template:cached
       - rails_bundle:/usr/local/bundle
     ports:
-      - "${EXTERNAL_RAILS_PORT:-9292}:9292"
+      - "${EXTERNAL_RAILS_PORT:-3000}:3000"
     environment:
       - DB_HOST=mysql
     depends_on:
